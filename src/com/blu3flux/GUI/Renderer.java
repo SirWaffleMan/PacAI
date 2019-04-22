@@ -25,16 +25,17 @@ public class Renderer extends JPanel {
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		// Render Level
 		g.drawImage(game.level1.getImage(), 0, 0, this);
-		// Render pacman
-		//g.drawImage(game.pacman.getImage(), (int)game.pacman.getX(), (int)game.pacman.getY(), this); // TODO: Take a closer look at integer casting
 		// Render Food
 		g.setColor(Color.ORANGE);
-		
-		int x = 125;
-		int y = 100;
-		
 		for(Food food : game.food) {
 			g.fillRect((int)food.getX(), (int)food.getY(), (int)food.getWidth(), (int)food.getHeight());// TODO: Take a closer look at integer casting
 		}
+		// Render pacman
+		g.drawImage(game.pacman.getImage(), (int)game.pacman.getX(), (int)game.pacman.getY(), this); // TODO: Take a closer look at integer casting
+		// Render ghosts
+		g.drawImage(game.blinky.getImage(), (int)game.blinky.getX(), (int)game.blinky.getY(), this); // TODO: Take a closer look at integer casting
+		g.drawImage(game.pinky.getImage(), (int)game.pinky.getX(), (int)game.pinky.getY(), this); // TODO: Take a closer look at integer casting
+		g.drawImage(game.inky.getImage(), (int)game.inky.getX(), (int)game.inky.getY(), this); // TODO: Take a closer look at integer casting
+		g.drawImage(game.clyde.getImage(), (int)game.clyde.getX(), (int)game.clyde.getY(), this); // TODO: Take a closer look at integer casting
 	}
 }
