@@ -17,17 +17,21 @@ public class Game {
 	public Ghost pinky;
 	public Ghost inky;
 	public Ghost clyde;
-	public ArrayList<Food> food = new ArrayList<Food>();
+	public ArrayList<Food> food;
 	
 	public Game() {
+		init();
+		readLevelData();
+	}
+	
+	private void init() {
 		level1 = new Level("assets/level1.png");
 		pacman = new Pacman("assets/pacman.png");
 		blinky = new Ghost(400, 322,"assets/blinky.png");
 		inky = new Ghost(357, 390,"assets/inky.png");
 		pinky = new Ghost(400, 390,"assets/pinky.png");
 		clyde = new Ghost(443, 390,"assets/clyde.png");
-		readLevelData();
-		
+		food  = new ArrayList<Food>();
 	}
 	
 	public void readLevelData() {
