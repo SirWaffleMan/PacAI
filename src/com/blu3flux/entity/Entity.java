@@ -8,8 +8,8 @@ import javax.imageio.ImageIO;
 
 public abstract class Entity {
 	
-	protected float X;
-	protected float Y;
+	protected int X;
+	protected int Y;
 	protected BufferedImage image;
 	
 	public Entity(String imgLoc) {
@@ -26,20 +26,28 @@ public abstract class Entity {
         return null;
     }
 	
-	public float getX() {
-		return this.X - this.getWidth()/2.0f;
+	public void setX(int x) {
+		this.X = x + this.getWidth()/2;
 	}
 	
-	public float getY() {
-		return this.Y - this.getHeight()/2.0f;
+	public void setY(int y) {
+		this.Y = y + this.getHeight()/2;
 	}
 	
-	protected float getHeight() {
-		return (float)image.getHeight();
+	public int getX() {
+		return this.X - this.getWidth()/2;
 	}
 	
-	protected float getWidth() {
-		return (float)image.getWidth();
+	public int getY() {
+		return this.Y - this.getHeight()/2;
+	}
+	
+	protected int getHeight() {
+		return image.getHeight();
+	}
+	
+	protected int getWidth() {
+		return image.getWidth();
 	}
 	
 	public BufferedImage getImage() {

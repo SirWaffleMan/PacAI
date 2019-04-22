@@ -2,25 +2,25 @@ package com.blu3flux.entity;
 
 public class Food extends Entity{
 	
-	private float size = 5;
+	private int size = 5;
 
 	public Food(String imgLoc) {
 		super(imgLoc);
 	}
 	
-	public Food(float x, float y) {
+	public Food(int x, int y) {
 		super("");
 		this.X = x;
 		this.Y = y;
 	}
 	
 	@Override
-	public float getWidth() {
+	public int getWidth() {
 		return size;
 	}
 	
 	@Override
-	public float getHeight() {
+	public int getHeight() {
 		return size;
 	}
 	

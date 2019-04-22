@@ -17,6 +17,7 @@ public class Renderer extends JPanel {
 		this.game = g;
 	}
 	
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		

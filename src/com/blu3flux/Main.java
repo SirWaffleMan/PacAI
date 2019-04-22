@@ -15,6 +15,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		init();
+		start();
 	}
 	
 	public static void init() {
@@ -29,6 +30,18 @@ public class Main {
 		frame.add(renderer);
 		frame.setVisible(true);
 		frame.pack();
+	}
+	
+	public static void start() {
+		game.start();
+		
+		while(true) {
+			render();
+		}
+	}
+	
+	private static void render() {
+		renderer.repaint();
 	}
 
 }
