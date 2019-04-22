@@ -13,7 +13,8 @@ public abstract class Entity {
 	protected BufferedImage image;
 	
 	public Entity(String imgLoc) {
-		image = getImage(imgLoc);
+		if(imgLoc != "")
+			image = getImage(imgLoc);
 	}
 	
 	protected BufferedImage getImage(String filename) {
@@ -24,6 +25,14 @@ public abstract class Entity {
         }
         return null;
     }
+	
+	public float getX() {
+		return this.X - this.getWidth()/2.0f;
+	}
+	
+	public float getY() {
+		return this.Y - this.getHeight()/2.0f;
+	}
 	
 	protected float getHeight() {
 		return (float)image.getHeight();

@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import com.blu3flux.Game;
+import com.blu3flux.entity.Food;
 
 public class Renderer extends JPanel {
 
@@ -25,6 +26,15 @@ public class Renderer extends JPanel {
 		// Render Level
 		g.drawImage(game.level1.getImage(), 0, 0, this);
 		// Render pacman
-		g.drawImage(game.pacman.getImage(), (int)game.pacman.getX(), (int)game.pacman.getY(), this); // TODO: Take a closer look at integer casting
+		//g.drawImage(game.pacman.getImage(), (int)game.pacman.getX(), (int)game.pacman.getY(), this); // TODO: Take a closer look at integer casting
+		// Render Food
+		g.setColor(Color.ORANGE);
+		
+		int x = 125;
+		int y = 100;
+		
+		for(Food food : game.food) {
+			g.fillRect((int)food.getX(), (int)food.getY(), (int)food.getWidth(), (int)food.getHeight());// TODO: Take a closer look at integer casting
+		}
 	}
 }
