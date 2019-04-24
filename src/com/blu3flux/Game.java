@@ -1,9 +1,13 @@
 package com.blu3flux;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.imageio.ImageIO;
 
 import com.blu3flux.entity.Food;
 import com.blu3flux.entity.Ghost;
@@ -13,8 +17,7 @@ public class Game implements Runnable{
 	// Game Properties
 	private boolean isRunning;
 	private int gameSpeed = 7500000;
-	Thread thread;
-	
+	private Thread thread;
 	
 	// Game Entities
 	public Level level1;
@@ -24,6 +27,8 @@ public class Game implements Runnable{
 	public Ghost inky;
 	public Ghost clyde;
 	public ArrayList<Food> food;
+	
+	int[][]path;
 	
 	public Game() {
 		init();
@@ -62,6 +67,7 @@ public class Game implements Runnable{
 	}
 	
 	public void readLevelData() {
+		// Read food locations
 		File levelData = new File("assets/level1.dat");
 		Scanner scanner = null;
 		try {
@@ -70,12 +76,24 @@ public class Game implements Runnable{
 			e.printStackTrace();
 		}
 		
-		// File format (by line):
-		// X_loc <space> Y_loc
 		while(scanner.hasNextLine()) {
 			food.add(new Food(scanner.nextInt(), scanner.nextInt()));
 		}
 		scanner.close();
+		
+		// Read level path
+		BufferedImage pathImage = null;
+		try {                
+            pathImage = ImageIO.read(new File("assets/level1_map.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		path = new int[pathImage.getHeight()][pathImage.getWidth()];
+		for(int i = 0; i < path.length; i++) {
+			for(int j = 0; j < path[i].length; j++) {
+				path[i][j] = (pathImage.getRGB(j, i) == -1) ? 1 : 0;
+			}
+		}
 		
 	}
 	
