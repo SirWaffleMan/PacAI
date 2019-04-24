@@ -3,15 +3,11 @@ package com.blu3flux.entity;
 public class Food extends Entity{
 	
 	private int size = 5;
-
-	public Food(String imgLoc) {
-		super(imgLoc);
-	}
 	
 	public Food(int x, int y) {
-		super("");
-		this.X = x;
-		this.Y = y;
+		super(null,"");
+		this.realX = x;
+		this.realY = y;
 	}
 	
 	@Override

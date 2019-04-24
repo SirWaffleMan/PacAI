@@ -30,6 +30,8 @@ public class Main {
 		frame.add(renderer);
 		frame.setVisible(true);
 		frame.pack();
+		renderer.setFocusable(true);
+		renderer.requestFocusInWindow();
 	}
 	
 	public static void start() {

@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 import com.blu3flux.entity.Food;
 import com.blu3flux.entity.Ghost;
 import com.blu3flux.entity.Pacman;
+import com.blu3flux.input.Input;
 
 public class Game implements Runnable{
 	// Game Properties
@@ -28,11 +29,14 @@ public class Game implements Runnable{
 	public Ghost clyde;
 	public ArrayList<Food> food;
 	
+	// Game Data
 	int[][]path;
+	
+	// Player input
+	public Input input;
 	
 	public Game() {
 		init();
-		readLevelData();
 	}
 	
 	public void start() {
@@ -52,21 +56,23 @@ public class Game implements Runnable{
 	}
 	
 	private void tick() {
-		
+		pacman.tick();
 	}
 	
 	private void init() {
 		level1 = new Level("assets/level1.png");
-		pacman = new Pacman("assets/pacman.png");
-		blinky = new Ghost(400, 322,"assets/blinky.png");
-		inky = new Ghost(357, 390,"assets/inky.png");
-		pinky = new Ghost(400, 390,"assets/pinky.png");
-		clyde = new Ghost(443, 390,"assets/clyde.png");
 		food  = new ArrayList<Food>();
 		thread = new Thread(this);
+		readLevelData();
+		pacman = new Pacman(path,"assets/pacman.png");
+		blinky = new Ghost(path,400, 322,"assets/blinky.png");
+		inky = new Ghost(path,357, 390,"assets/inky.png");
+		pinky = new Ghost(path,400, 390,"assets/pinky.png");
+		clyde = new Ghost(path,443, 390,"assets/clyde.png");
+		input = new Input(pacman);
 	}
 	
-	public void readLevelData() {
+	private void readLevelData() {
 		// Read food locations
 		File levelData = new File("assets/level1.dat");
 		Scanner scanner = null;
@@ -94,7 +100,6 @@ public class Game implements Runnable{
 				path[i][j] = (pathImage.getRGB(j, i) == -1) ? 1 : 0;
 			}
 		}
-		
 	}
 	
 }

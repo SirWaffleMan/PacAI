@@ -15,6 +15,7 @@ public class Renderer extends JPanel {
 	
 	public Renderer(Game g) {
 		this.game = g;
+		addKeyListener(game.input);
 	}
 	
 	@Override
@@ -29,14 +30,15 @@ public class Renderer extends JPanel {
 		// Render Food
 		g.setColor(Color.ORANGE);
 		for(Food food : game.food) {
-			g.fillRect((int)food.getX(), (int)food.getY(), (int)food.getWidth(), (int)food.getHeight());// TODO: Take a closer look at integer casting
+			g.fillRect(food.getRealX(), food.getRealY(), food.getWidth(), food.getHeight());
 		}
 		// Render pacman
-		g.drawImage(game.pacman.getImage(), (int)game.pacman.getX(), (int)game.pacman.getY(), this); // TODO: Take a closer look at integer casting
+		g.drawImage(game.pacman.getImage(), game.pacman.getRealX()-game.pacman.getWidth()/2, game.pacman.getRealY()-game.pacman.getHeight()/2, this);
+		//g.fillRect(game.pacman.getRealX(), game.pacman.getRealY(), game.pacman.getWidth(), game.pacman.getHeight());
 		// Render ghosts
-		g.drawImage(game.blinky.getImage(), (int)game.blinky.getX(), (int)game.blinky.getY(), this); // TODO: Take a closer look at integer casting
-		g.drawImage(game.pinky.getImage(), (int)game.pinky.getX(), (int)game.pinky.getY(), this); // TODO: Take a closer look at integer casting
-		g.drawImage(game.inky.getImage(), (int)game.inky.getX(), (int)game.inky.getY(), this); // TODO: Take a closer look at integer casting
-		g.drawImage(game.clyde.getImage(), (int)game.clyde.getX(), (int)game.clyde.getY(), this); // TODO: Take a closer look at integer casting
+		g.drawImage(game.blinky.getImage(), game.blinky.getRealX(), game.blinky.getRealY(), this);
+		g.drawImage(game.pinky.getImage(), game.pinky.getRealX(), game.pinky.getRealY(), this);
+		g.drawImage(game.inky.getImage(), game.inky.getRealX(), game.inky.getRealY(), this);
+		g.drawImage(game.clyde.getImage(), game.clyde.getRealX(), game.clyde.getRealY(), this);
 	}
 }
