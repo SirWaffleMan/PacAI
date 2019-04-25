@@ -43,63 +43,75 @@ public abstract class Entity {
     }
 	
 	public void tick() {
+		System.out.println(this.direction);
 		move();
 	}
 	
 	private void move() {
 		
+		Direction directionRequest = direction;
+		
 		if(isMovingUp) {
 			if(path[Y-1][X] != 0)
-				direction = Direction.UP;
+				directionRequest = Direction.UP;
 		}
 		else if(isMovingRight) {
 			if(path[Y][X+1] != 0)
-				direction = Direction.RIGHT;
+				directionRequest = Direction.RIGHT;
 		}
 		else if(isMovingDown) {
 			if(path[Y+1][X] != 0)
-				direction = Direction.DOWN;
+				directionRequest = Direction.DOWN;
 		}
 		else if(isMovingLeft) {
 			if(path[Y][X-1] != 0)
-				direction = Direction.LEFT;
+				directionRequest = Direction.LEFT;
 		}
 		
-		if(checkValidMovement(direction)) {
-			switch(direction) {
+		if(checkValidMovement(directionRequest)) {
+			switch(directionRequest) {
 			case UP:
 				setRealY(getRealY() - movementSpeed);
+				direction = Direction.UP;
+				//setRealX(125 + (getX()-1) * 22); // Adjust
 				break;
 			case RIGHT:
 				setRealX(getRealX() + movementSpeed);
+				direction = Direction.RIGHT;
+				//setRealY(103 + (getY()-1) * 22); // Adjust
 				break;
 			case DOWN:
 				setRealY(getRealY() + movementSpeed);
+				direction = Direction.DOWN;
+				//setRealX(125 + (getX()-1) * 22); // Adjust
 				break;
 			case LEFT:
 				setRealX(getRealX() - movementSpeed);
+				direction = Direction.LEFT;
+				//setRealY(103 + (getY()-1) * 22); // Adjust
 				break;
 			}
 		}
+		
 	}
 	
 	private boolean checkValidMovement(Direction d) {
 		
 		switch(d) {
 		case UP:
-			if(path[Y-1][X] == 1)
+			if(path[Y-1][X] == 1 && (this.realX-125) % 22 == 0)
 				return true;
 			break;
 		case RIGHT:
-			if(path[Y][X+1] == 1)
+			if(path[Y][X+1] == 1 && (this.realY-103) % 22 == 0)
 				return true;
 			break;
 		case DOWN:
-			if(path[Y+1][X] == 1)
+			if(path[Y+1][X] == 1 && (this.realX-125) % 22 == 0)
 				return true;
 			break;
 		case LEFT:
-			if(path[Y][X-1] == 1)
+			if(path[Y][X-1] == 1 && (this.realY-103) % 22 == 0)
 				return true;
 			break;
 		}
@@ -134,6 +146,14 @@ public abstract class Entity {
 	
 	public int getRealY() {
 		return this.realY;
+	}
+	
+	public int getX() {
+		return this.X;
+	}
+	
+	public int getY() {
+		return this.Y;
 	}
 	
 	public void setDirection(Direction d) {
