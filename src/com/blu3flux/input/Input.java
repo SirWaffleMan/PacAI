@@ -5,29 +5,30 @@ import java.awt.event.KeyListener;
 
 import com.blu3flux.entity.Direction;
 import com.blu3flux.entity.Entity;
+import com.blu3flux.entity.move.Move;
 
 public class Input implements KeyListener{
 	
-	private Entity entity;
+	private Move move;
 	
 	public Input(Entity entity){
-		this.entity = entity;
+		this.move = (Move) entity.moveBehavior;
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		switch(e.getKeyCode()) {
 		case KeyEvent.VK_UP:
-			entity.isMovingUp = true;
+			move.isMovingUp = true;
 			break;
 		case KeyEvent.VK_RIGHT:
-			entity.isMovingRight = true;
+			move.isMovingRight = true;
 			break;
 		case KeyEvent.VK_DOWN:
-			entity.isMovingDown = true;
+			move.isMovingDown = true;
 			break;
 		case KeyEvent.VK_LEFT:
-			entity.isMovingLeft = true;
+			move.isMovingLeft = true;
 			break;
 		}
 	}
@@ -36,16 +37,16 @@ public class Input implements KeyListener{
 	public void keyReleased(KeyEvent e) {
 		switch(e.getKeyCode()) {
 		case KeyEvent.VK_UP:
-			entity.isMovingUp = false;
+			move.isMovingUp = false;
 			break;
 		case KeyEvent.VK_RIGHT:
-			entity.isMovingRight = false;
+			move.isMovingRight = false;
 			break;
 		case KeyEvent.VK_DOWN:
-			entity.isMovingDown = false;
+			move.isMovingDown = false;
 			break;
 		case KeyEvent.VK_LEFT:
-			entity.isMovingLeft = false;
+			move.isMovingLeft = false;
 			break;
 		}
 	}

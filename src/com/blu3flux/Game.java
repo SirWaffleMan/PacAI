@@ -11,10 +11,12 @@ import javax.imageio.ImageIO;
 
 import com.blu3flux.entity.Food;
 import com.blu3flux.entity.Ghost;
+import com.blu3flux.entity.Obstacle;
 import com.blu3flux.entity.Pacman;
 import com.blu3flux.input.Input;
 
 public class Game implements Runnable{
+	
 	// Game Properties
 	private boolean isRunning;
 	private int gameSpeed = 7500000;
@@ -28,9 +30,10 @@ public class Game implements Runnable{
 	public Ghost inky;
 	public Ghost clyde;
 	public ArrayList<Food> food;
+	public ArrayList<Obstacle> obstacle;
 	
 	// Game Data
-	int[][]path;
+	public int[][]path;
 	
 	// Player input
 	public Input input;
@@ -61,6 +64,7 @@ public class Game implements Runnable{
 	
 	private void init() {
 		level1 = new Level("assets/level1.png");
+		obstacle = new ArrayList<Obstacle>();
 		food  = new ArrayList<Food>();
 		thread = new Thread(this);
 		readLevelData();
@@ -70,22 +74,10 @@ public class Game implements Runnable{
 		pinky = new Ghost(path,400, 390,"assets/pinky.png");
 		clyde = new Ghost(path,443, 390,"assets/clyde.png");
 		input = new Input(pacman);
+		
 	}
 	
 	private void readLevelData() {
-		// Read food locations
-		File levelData = new File("assets/level1.dat");
-		Scanner scanner = null;
-		try {
-			scanner = new Scanner(levelData);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		while(scanner.hasNextLine()) {
-			food.add(new Food(scanner.nextInt(), scanner.nextInt()));
-		}
-		scanner.close();
 		
 		// Read level path
 		BufferedImage pathImage = null;
@@ -97,9 +89,19 @@ public class Game implements Runnable{
 		path = new int[pathImage.getHeight()][pathImage.getWidth()];
 		for(int i = 0; i < path.length; i++) {
 			for(int j = 0; j < path[i].length; j++) {
+				
+
 				path[i][j] = (pathImage.getRGB(j, i) == -1) ? 1 : 0;
+				
+				if(pathImage.getRGB(j,i) == -16777216)
+					obstacle.add(new Obstacle(92 + j*22,70 + i*22));
+				
+				if(pathImage.getRGB(j,i) == -256) {
+					food.add(new Food(103 + j * 22, 81 + i * 22));
+				}
 			}
 		}
+		
 	}
 	
 }

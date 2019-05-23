@@ -1,11 +1,12 @@
 package com.blu3flux.entity;
 
+import com.blu3flux.entity.move.Move;
+
 public class Pacman extends Entity{
 	
 	public Pacman(int[][]path,String imgLoc) {
-		super(path,imgLoc);
-		super.setRealX(125);//440
-		super.setRealY(103);//587
+		super(path,imgLoc, new Move());
+		setLocation(440,587);
 	}
 	
 }
