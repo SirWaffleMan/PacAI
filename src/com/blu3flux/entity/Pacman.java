@@ -6,7 +6,7 @@ public class Pacman extends Entity{
 	
 	public Pacman(int[][]path,String imgLoc) {
 		super(path,imgLoc, new Move());
-		setLocation(440,587);
+		setLocation(400,590);
 	}
 	
 }

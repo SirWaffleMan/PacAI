@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 
 import com.blu3flux.Game;
 import com.blu3flux.entity.Food;
-import com.blu3flux.entity.Obstacle;
 
 public class Renderer extends JPanel {
 
@@ -36,14 +35,12 @@ public class Renderer extends JPanel {
 			g.fillRect(food.getX(), food.getY(), food.getWidth(), food.getHeight());
 		}
 		
-		
-		
 		// Render Pacman
-		g.drawImage(game.pacman.getImage(), game.pacman.getX(), game.pacman.getY(), this);
+		g.drawImage(game.pacman.getImage(), game.pacman.getXRelativeToCenter(), game.pacman.getYRelativeToCenter(), this);
 		// Render ghosts
-		g.drawImage(game.blinky.getImage(), game.blinky.getX(), game.blinky.getY(), this);
-		g.drawImage(game.pinky.getImage(), game.pinky.getX(), game.pinky.getY(), this);
-		g.drawImage(game.inky.getImage(), game.inky.getX(), game.inky.getY(), this);
-		g.drawImage(game.clyde.getImage(), game.clyde.getX(), game.clyde.getY(), this);
+		g.drawImage(game.blinky.getImage(), game.blinky.getXRelativeToCenter(), game.blinky.getYRelativeToCenter(), this);
+		g.drawImage(game.pinky.getImage(), game.pinky.getXRelativeToCenter(), game.pinky.getYRelativeToCenter(), this);
+		g.drawImage(game.inky.getImage(), game.inky.getXRelativeToCenter(), game.inky.getYRelativeToCenter(), this);
+		g.drawImage(game.clyde.getImage(), game.clyde.getXRelativeToCenter(), game.clyde.getYRelativeToCenter(), this);
 	}
 }

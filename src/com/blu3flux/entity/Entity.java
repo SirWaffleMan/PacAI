@@ -56,6 +56,14 @@ public abstract class Entity {
 		return coordinates.x;
 	}
 	
+	public int getXRelativeToCenter() {
+		return getX() - getWidth() / 2;
+	}
+	
+	public int getYRelativeToCenter() {
+		return getY() - getHeight() / 2;
+	}
+	
 	public int getY() {
 		return coordinates.y;
 	}

@@ -11,7 +11,6 @@ import javax.imageio.ImageIO;
 
 import com.blu3flux.entity.Food;
 import com.blu3flux.entity.Ghost;
-import com.blu3flux.entity.Obstacle;
 import com.blu3flux.entity.Pacman;
 import com.blu3flux.input.Input;
 
@@ -30,7 +29,6 @@ public class Game implements Runnable{
 	public Ghost inky;
 	public Ghost clyde;
 	public ArrayList<Food> food;
-	public ArrayList<Obstacle> obstacle;
 	
 	// Game Data
 	public int[][]path;
@@ -64,20 +62,18 @@ public class Game implements Runnable{
 	
 	private void init() {
 		level1 = new Level("assets/level1.png");
-		obstacle = new ArrayList<Obstacle>();
 		food  = new ArrayList<Food>();
 		thread = new Thread(this);
-		readLevelData();
+		loadLevel();
 		pacman = new Pacman(path,"assets/pacman.png");
 		blinky = new Ghost(path,400, 322,"assets/blinky.png");
 		inky = new Ghost(path,357, 390,"assets/inky.png");
 		pinky = new Ghost(path,400, 390,"assets/pinky.png");
 		clyde = new Ghost(path,443, 390,"assets/clyde.png");
 		input = new Input(pacman);
-		
 	}
 	
-	private void readLevelData() {
+	private void loadLevel() {
 		
 		// Read level path
 		BufferedImage pathImage = null;
@@ -90,11 +86,7 @@ public class Game implements Runnable{
 		for(int i = 0; i < path.length; i++) {
 			for(int j = 0; j < path[i].length; j++) {
 				
-
 				path[i][j] = (pathImage.getRGB(j, i) == -1) ? 1 : 0;
-				
-				if(pathImage.getRGB(j,i) == -16777216)
-					obstacle.add(new Obstacle(92 + j*22,70 + i*22));
 				
 				if(pathImage.getRGB(j,i) == -256) {
 					food.add(new Food(103 + j * 22, 81 + i * 22));

@@ -38,28 +38,20 @@ public class Move implements MoveableBehavior{
 		return new Point(x,y);
 	}
 
-	@Override
 	public void moveRight() {
-		// TODO Auto-generated method stub
-		
+		// TODO
 	}
 
-	@Override
 	public void moveDown() {
-		// TODO Auto-generated method stub
-		
+		// TODO
 	}
 
-	@Override
 	public void moveLeft() {
-		// TODO Auto-generated method stub
-		
+		// TODO 
 	}
 
-	@Override
 	public void moveUp() {
-		// TODO Auto-generated method stub
-		
+		// TODO
 	}
 
 }
