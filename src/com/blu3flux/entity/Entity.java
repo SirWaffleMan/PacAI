@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import com.blu3flux.entity.move.MoveableBehavior;
+import com.blu3flux.entity.movement.MoveableBehavior;
 
 public abstract class Entity {
 	

@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import com.blu3flux.entity.Entity;
-import com.blu3flux.entity.move.Move;
+import com.blu3flux.entity.movement.Move;
 
 public class Input implements KeyListener{
 	

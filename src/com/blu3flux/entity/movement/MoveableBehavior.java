@@ -1,4 +1,4 @@
-package com.blu3flux.entity.move;
+package com.blu3flux.entity.movement;
 
 import java.awt.Point;
 

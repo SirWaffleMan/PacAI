@@ -1,6 +1,6 @@
 package com.blu3flux.entity;
 
-import com.blu3flux.entity.move.Move;
+import com.blu3flux.entity.movement.Move;
 
 public class Ghost extends Entity {
 

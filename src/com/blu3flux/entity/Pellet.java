@@ -1,6 +1,6 @@
 package com.blu3flux.entity;
 
-import com.blu3flux.entity.move.NoMove;
+import com.blu3flux.entity.movement.NoMove;
 
 public class Pellet extends Entity{
 	
