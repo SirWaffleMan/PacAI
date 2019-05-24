@@ -6,32 +6,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
-import com.blu3flux.entity.Food;
-import com.blu3flux.entity.Ghost;
-import com.blu3flux.entity.Pacman;
 import com.blu3flux.input.Input;
+import com.blu3flux.level.Level;
+import com.blu3flux.level.LevelEncoding;
 
 public class Game implements Runnable{
 	
 	// Game Properties
-	private boolean isRunning;
-	private int gameSpeed = 7500000;
-	private Thread thread;
-	
-	// Game Entities
-	public Level level1;
-	public Pacman pacman;
-	public Ghost blinky;
-	public Ghost pinky;
-	public Ghost inky;
-	public Ghost clyde;
-	public ArrayList<Food> food;
-	
-	// Game Data
-	public int[][]path;
+	boolean isRunning;
+	int gameSpeed = 7500000;
+	Thread thread;
 	
 	// Player input
-	public Input input;
+	Input input;
+	
+	// Game Level
+	ArrayList<Level> level;
 	
 	public Game() {
 		init();
@@ -54,43 +44,52 @@ public class Game implements Runnable{
 	}
 	
 	private void tick() {
-		pacman.tick();
+		getLevel().tick();
 	}
 	
 	private void init() {
-		level1 = new Level("assets/level1.png");
-		food  = new ArrayList<Food>();
+		level = new ArrayList<Level>();
 		thread = new Thread(this);
-		loadLevel();
-		pacman = new Pacman(path,"assets/pacman.png");
-		blinky = new Ghost(path,400, 322,"assets/blinky.png");
-		inky = new Ghost(path,357, 390,"assets/inky.png");
-		pinky = new Ghost(path,400, 390,"assets/pinky.png");
-		clyde = new Ghost(path,443, 390,"assets/clyde.png");
-		input = new Input(pacman);
+		loadLevel("assets/level1.png");
+		input = new Input(getLevel().getPacman());
 	}
 	
-	private void loadLevel() {
+	private void loadLevel(String fileName) {
 		
-		// Read level path
-		BufferedImage pathImage = null;
-		try {                
-            pathImage = ImageIO.read(new File("assets/level1_map.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-		path = new int[pathImage.getHeight()][pathImage.getWidth()];
-		for(int i = 0; i < path.length; i++) {
-			for(int j = 0; j < path[i].length; j++) {
-				
-				path[i][j] = (pathImage.getRGB(j, i) == -1) ? 1 : 0;
-				
-				if(pathImage.getRGB(j,i) == -256) {
-					food.add(new Food(103 + j * 22, 81 + i * 22));
-				}
-			}
+		// Read level PNG data
+		BufferedImage levelDataImage = null;
+		try {
+			levelDataImage = ImageIO.read(new File(fileName));
+		}catch(IOException e) {
+			e.printStackTrace();
 		}
 		
+		// Encode level data
+		LevelEncoding[][] levelData = new LevelEncoding[levelDataImage.getHeight()][levelDataImage.getWidth()];
+		for(int i = 0; i < levelData.length; i++) {
+			for(int j = 0; j < levelData[i].length; j++) {
+				
+				int color = levelDataImage.getRGB(j, i);
+				
+				if(color == -1) {
+					levelData[i][j] = LevelEncoding.PATH;
+				}else if(color == -256) {
+					levelData[i][j] = LevelEncoding.PELLET;
+				}else {
+					levelData[i][j] = LevelEncoding.WALL;
+				}
+				
+			}
+		}
+		level.add(new Level(levelData));
+	}
+	
+	public Level getLevel() {
+		return level.get(0);
+	}
+	
+	public Input getInput() {
+		return this.input;
 	}
 	
 }

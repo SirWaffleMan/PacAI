@@ -15,15 +15,13 @@ public abstract class Entity {
 	
 	// Location
 	Point coordinates;
-	int[][]path;
 	
 	// Image
 	protected BufferedImage image;
 	
-	public Entity(int[][]path,String imgLoc, MoveableBehavior moveBehavior) {
+	public Entity(String imgLoc, MoveableBehavior moveBehavior) {
 		if(imgLoc != "")
 			image = getImage(imgLoc);
-		this.path = path;
 		this.moveBehavior = moveBehavior;
 	}
 	

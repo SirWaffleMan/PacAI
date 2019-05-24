@@ -4,8 +4,8 @@ import com.blu3flux.entity.move.Move;
 
 public class Pacman extends Entity{
 	
-	public Pacman(int[][]path,String imgLoc) {
-		super(path,imgLoc, new Move());
+	public Pacman() {
+		super("assets/pacman.png", new Move());
 		setLocation(400,590);
 	}
 	

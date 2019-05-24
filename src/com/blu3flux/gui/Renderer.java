@@ -6,16 +6,19 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import com.blu3flux.Game;
-import com.blu3flux.entity.Food;
+import com.blu3flux.entity.Pellet;
+import com.blu3flux.level.Level;
 
 public class Renderer extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private Game game;
+	private Level level;
 	
 	public Renderer(Game g) {
 		this.game = g;
-		addKeyListener(game.input);
+		this.level = g.getLevel();
+		addKeyListener(game.getInput());
 	}
 	
 	@Override
@@ -26,21 +29,21 @@ public class Renderer extends JPanel {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
-		// Render Level
-		g.drawImage(game.level1.getImage(), 0, 0, this);
+		// TODO: Render level
+		g.drawImage(level.image, 0, 0, this);
 		
 		// Render Food
 		g.setColor(Color.ORANGE);
-		for(Food food : game.food) {
-			g.fillRect(food.getX(), food.getY(), food.getWidth(), food.getHeight());
+		for(Pellet p : level.getPellets()) {
+			g.fillRect(p.getX(), p.getY(), p.getWidth(), p.getHeight());
 		}
 		
 		// Render Pacman
-		g.drawImage(game.pacman.getImage(), game.pacman.getXRelativeToCenter(), game.pacman.getYRelativeToCenter(), this);
+		g.drawImage(level.getPacman().getImage(), level.getPacman().getXRelativeToCenter(), level.getPacman().getYRelativeToCenter(), this);
 		// Render ghosts
-		g.drawImage(game.blinky.getImage(), game.blinky.getXRelativeToCenter(), game.blinky.getYRelativeToCenter(), this);
-		g.drawImage(game.pinky.getImage(), game.pinky.getXRelativeToCenter(), game.pinky.getYRelativeToCenter(), this);
-		g.drawImage(game.inky.getImage(), game.inky.getXRelativeToCenter(), game.inky.getYRelativeToCenter(), this);
-		g.drawImage(game.clyde.getImage(), game.clyde.getXRelativeToCenter(), game.clyde.getYRelativeToCenter(), this);
+		g.drawImage(level.getBlinky().getImage(), level.getBlinky().getXRelativeToCenter(), level.getBlinky().getYRelativeToCenter(), this);
+		g.drawImage(level.getPinky().getImage(), level.getPinky().getXRelativeToCenter(), level.getPinky().getYRelativeToCenter(), this);
+		g.drawImage(level.getInky().getImage(), level.getInky().getXRelativeToCenter(), level.getInky().getYRelativeToCenter(), this);
+		g.drawImage(level.getClyde().getImage(), level.getClyde().getXRelativeToCenter(), level.getClyde().getYRelativeToCenter(), this);
 	}
 }
