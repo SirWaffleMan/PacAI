@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.blu3flux.GUI.Renderer;
+import com.blu3flux.gui.Renderer;
 
 public class Main {
 	

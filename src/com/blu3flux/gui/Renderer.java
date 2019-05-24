@@ -1,4 +1,4 @@
-package com.blu3flux.GUI;
+package com.blu3flux.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
