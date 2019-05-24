@@ -2,8 +2,6 @@ package com.blu3flux.entity.movement;
 
 import java.awt.Point;
 
-import com.blu3flux.entity.Direction;
-
 public class Move implements MoveableBehavior{
 	
 	Direction direction = Direction.RIGHT;
