@@ -3,7 +3,6 @@ package com.blu3flux;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import com.blu3flux.gui.Renderer;
 

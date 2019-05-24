@@ -3,7 +3,6 @@ package com.blu3flux.input;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import com.blu3flux.entity.Direction;
 import com.blu3flux.entity.Entity;
 import com.blu3flux.entity.move.Move;
 
