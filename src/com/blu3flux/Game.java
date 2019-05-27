@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 
 import com.blu3flux.input.Input;
 import com.blu3flux.level.Level;
-import com.blu3flux.level.LevelEncoding;
+import com.blu3flux.level.MapEncoding;
 
 public class Game implements Runnable{
 	
@@ -65,22 +65,23 @@ public class Game implements Runnable{
 		}
 		
 		// Encode level data
-		LevelEncoding[][] levelData = new LevelEncoding[levelDataImage.getHeight()][levelDataImage.getWidth()];
+		MapEncoding[][] levelData = new MapEncoding[levelDataImage.getHeight()][levelDataImage.getWidth()];
 		for(int i = 0; i < levelData.length; i++) {
 			for(int j = 0; j < levelData[i].length; j++) {
 				
 				int color = levelDataImage.getRGB(j, i);
 				
 				if(color == -1) {
-					levelData[i][j] = LevelEncoding.PATH;
+					levelData[i][j] = MapEncoding.PATH;
 				}else if(color == -256) {
-					levelData[i][j] = LevelEncoding.PELLET;
+					levelData[i][j] = MapEncoding.PELLET;
 				}else {
-					levelData[i][j] = LevelEncoding.WALL;
+					levelData[i][j] = MapEncoding.WALL;
 				}
 				
 			}
 		}
+		System.out.println("LEVEL DATA: " + levelData.length);
 		level.add(new Level(levelData));
 	}
 	

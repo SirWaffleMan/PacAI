@@ -13,7 +13,7 @@ import com.blu3flux.entity.Pellet;
 
 public class Level {
 	
-	LevelEncoding[][] data;
+	MapEncoding[][] mapData;
 	
 	Pacman pacman;
 	Ghost blinky, clyde, inky, pinky;
@@ -22,8 +22,8 @@ public class Level {
 	// TEMP
 	public BufferedImage image;
 	
-	public Level(LevelEncoding[][] data) {
-		this.data = data;
+	public Level(MapEncoding[][] data) {
+		this.mapData = data;
 		init();
 	}
 	
@@ -35,9 +35,9 @@ public class Level {
 		clyde = new Ghost(443,390, "assets/clyde.png");
 		pellet = new ArrayList<Pellet>();
 		
-		for(int i = 0; i < data.length; i++) {
-			for(int j = 0; j < data[i].length; j++) {
-				if(data[i][j] == LevelEncoding.PELLET) {
+		for(int i = 0; i < mapData.length; i++) {
+			for(int j = 0; j < mapData[i].length; j++) {
+				if(mapData[i][j] == MapEncoding.PELLET) {
 					pellet.add(new Pellet(103 + j * 22, 81 + i * 22));
 				}
 			}
@@ -84,5 +84,9 @@ public class Level {
 	
 	public ArrayList<Pellet> getPellets(){
 		return this.pellet;
+	}
+	
+	public MapEncoding[][] getMapData(){
+		return this.mapData;
 	}
 }
