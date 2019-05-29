@@ -4,7 +4,8 @@ import com.blu3flux.entity.movement.NoMove;
 
 public class Pellet extends Entity{
 	
-	private int size = 5;
+	protected int size = 5;
+	protected int points = 10;
 	
 	public Pellet(int x, int y) {
 		super("",new NoMove());
