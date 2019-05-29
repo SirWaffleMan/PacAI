@@ -81,7 +81,7 @@ public class Game implements Runnable{
 				
 			}
 		}
-		System.out.println("LEVEL DATA: " + levelData.length);
+		
 		level.add(new Level(levelData));
 	}
 	

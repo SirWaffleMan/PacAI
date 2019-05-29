@@ -1,11 +1,7 @@
 package com.blu3flux.level;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
 
 import com.blu3flux.entity.Ghost;
 import com.blu3flux.entity.Pacman;
@@ -18,9 +14,6 @@ public class Level {
 	Pacman pacman;
 	Ghost blinky, clyde, inky, pinky;
 	ArrayList<Pellet> pellet;
-	
-	// TEMP
-	public BufferedImage image;
 	
 	public Level(MapEncoding[][] data) {
 		this.mapData = data;
@@ -38,20 +31,10 @@ public class Level {
 		for(int i = 0; i < mapData.length; i++) {
 			for(int j = 0; j < mapData[i].length; j++) {
 				if(mapData[i][j] == MapEncoding.PELLET) {
-					pellet.add(new Pellet(103 + j * 22, 81 + i * 22));
+					pellet.add(new Pellet(81 + j * 22, 59 + i * 22));
 				}
 			}
-		}
-		
-		
-		// TEMP
-		try {
-			image = ImageIO.read(new File("assets/level1_map.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		
+		}	
 	}
 	
 	public void tick() {
