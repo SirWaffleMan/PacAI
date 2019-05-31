@@ -9,11 +9,17 @@ import com.blu3flux.entity.Pellet;
 
 public class Level {
 	
+	// Holds layout of the map
 	MapEncoding[][] mapData;
 	
+	// All entities in the game
 	Pacman pacman;
 	Ghost blinky, clyde, inky, pinky;
 	ArrayList<Pellet> pellet;
+	
+	// Constants
+	public final int spacing = 22;
+	
 	
 	public Level(MapEncoding[][] data) {
 		this.mapData = data;
@@ -31,7 +37,7 @@ public class Level {
 		for(int i = 0; i < mapData.length; i++) {
 			for(int j = 0; j < mapData[i].length; j++) {
 				if(mapData[i][j] == MapEncoding.PELLET) {
-					pellet.add(new Pellet(81 + j * 22, 59 + i * 22));
+					pellet.add(new Pellet(81 + j * spacing, 59 + i * spacing));
 				}
 			}
 		}	

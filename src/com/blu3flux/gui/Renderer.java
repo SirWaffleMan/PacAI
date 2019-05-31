@@ -75,28 +75,28 @@ public class Renderer extends JPanel {
 		for(int i = 1; i < wallLocations.length-1; i++) {
 			for(int j = 1; j < wallLocations[i].length-1; j++) {
 				
-				int x = xOffset + j * 22;
-				int y = yOffset + i * 22;
+				int x = xOffset + j * level.spacing;
+				int y = yOffset + i * level.spacing;
 				
 				if(wallLocations[i][j] == true) {
 					// RIGHT
 					if(wallLocations[i][j+1] == false) {
-						g.drawLine(x+22, y, x+22, y+22);
+						g.drawLine(x+level.spacing, y, x+level.spacing, y+level.spacing);
 					}
 					
 					// BOTTOM
 					if(wallLocations[i+1][j] == false) {
-						g.drawLine(x,y+22, x+22, y+22);
+						g.drawLine(x,y+level.spacing, x+level.spacing, y+level.spacing);
 					}
 					
 					// LEFT
 					if(wallLocations[i][j-1] == false) {
-						g.drawLine(x,y,x,y+22);
+						g.drawLine(x,y,x,y+level.spacing);
 					}
 					
 					// TOP
 					if(wallLocations[i-1][j] == false) {
-						g.drawLine(x, y, x+22, y);
+						g.drawLine(x, y, x+level.spacing, y);
 					}
 				}
 			}
