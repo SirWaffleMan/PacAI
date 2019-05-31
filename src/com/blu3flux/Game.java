@@ -75,10 +75,13 @@ public class Game implements Runnable{
 					levelData[i][j] = MapEncoding.PATH;
 				}else if(color == -256) {
 					levelData[i][j] = MapEncoding.PELLET;
-				}else {
+				}else if(color == -16777216){
 					levelData[i][j] = MapEncoding.WALL;
+				}else if(color == -1237980) {
+					levelData[i][j] = MapEncoding.SPAWN;
+				}else if(color == -14503604){
+					levelData[i][j] = MapEncoding.PPELLET;
 				}
-				
 			}
 		}
 		

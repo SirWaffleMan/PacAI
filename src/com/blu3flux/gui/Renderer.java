@@ -51,7 +51,7 @@ public class Renderer extends JPanel {
 			x+= level.xOrigin + spacing;
 			y+= level.yOrigin + spacing;
 			
-			g.fillRect(x, y, p.getWidth(), p.getHeight());
+			g.fillOval(x - p.getWidth() / 2, y - p.getHeight() / 2, p.getWidth(), p.getHeight());
 		}
 		
 		// Render Pacman

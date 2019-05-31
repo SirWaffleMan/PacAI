@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.blu3flux.entity.Ghost;
 import com.blu3flux.entity.Pacman;
 import com.blu3flux.entity.Pellet;
+import com.blu3flux.entity.PowerPellet;
 
 public class Level {
 	
@@ -34,10 +35,16 @@ public class Level {
 		clyde = new Ghost(385,353, "assets/clyde.png");
 		pellet = new ArrayList<Pellet>();
 		
+		
 		for(int i = 0; i < mapData.length; i++) {
 			for(int j = 0; j < mapData[i].length; j++) {
+				// Create Pellets
 				if(mapData[i][j] == MapEncoding.PELLET) {
 					pellet.add(new Pellet(xOrigin + j, yOrigin + i));
+				}
+				
+				if(mapData[i][j] == MapEncoding.PPELLET) {
+					pellet.add(new PowerPellet(xOrigin + j, yOrigin + i));
 				}
 			}
 		}	
