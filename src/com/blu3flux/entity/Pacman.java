@@ -6,7 +6,7 @@ public class Pacman extends Entity{
 	
 	public Pacman() {
 		super("assets/pacman.png", new Move());
-		setLocation(400,590);
+		setLocation(341,551);
 	}
 	
 }

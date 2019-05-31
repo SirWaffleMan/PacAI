@@ -24,7 +24,7 @@ public class Main {
 		renderer = new Renderer(game);
 		
 		// Setup window
-		renderer.setPreferredSize(new Dimension(800, 800));
+		renderer.setPreferredSize(new Dimension(682, 748));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(renderer);
 		frame.setVisible(true);

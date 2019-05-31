@@ -18,8 +18,8 @@ public class Level {
 	ArrayList<Pellet> pellet;
 	
 	// Constants
-	public final int xOrigin = 59;
-	public final int yOrigin = 38;
+	public final int xOrigin = 0;
+	public final int yOrigin = 0;
 	
 	public Level(MapEncoding[][] data) {
 		this.mapData = data;
@@ -28,10 +28,10 @@ public class Level {
 	
 	private void init() {
 		pacman = new Pacman();
-		blinky = new Ghost(400,322, "assets/blinky.png");
-		inky = new Ghost(357, 390, "assets/inky.png");
-		pinky = new Ghost(400,390, "assets/pinky.png");
-		clyde = new Ghost(443,390, "assets/clyde.png");
+		blinky = new Ghost(341,287, "assets/blinky.png");
+		inky = new Ghost(297, 353, "assets/inky.png");
+		pinky = new Ghost(341,353, "assets/pinky.png");
+		clyde = new Ghost(385,353, "assets/clyde.png");
 		pellet = new ArrayList<Pellet>();
 		
 		for(int i = 0; i < mapData.length; i++) {
