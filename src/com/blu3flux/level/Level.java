@@ -18,8 +18,8 @@ public class Level {
 	ArrayList<Pellet> pellet;
 	
 	// Constants
-	public final int spacing = 22;
-	
+	public final int xOrigin = 59;
+	public final int yOrigin = 38;
 	
 	public Level(MapEncoding[][] data) {
 		this.mapData = data;
@@ -37,7 +37,7 @@ public class Level {
 		for(int i = 0; i < mapData.length; i++) {
 			for(int j = 0; j < mapData[i].length; j++) {
 				if(mapData[i][j] == MapEncoding.PELLET) {
-					pellet.add(new Pellet(81 + j * spacing, 59 + i * spacing));
+					pellet.add(new Pellet(xOrigin + j, yOrigin + i));
 				}
 			}
 		}	
