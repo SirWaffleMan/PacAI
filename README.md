@@ -25,7 +25,7 @@ To adopt:
 The location where Pac-man will spawn.
 
 To adopt:
-  Color: N/A
+  Color: Red (255,0,0)
   Dimesion: 2x1 px
   
 #### Ghosts spawn
