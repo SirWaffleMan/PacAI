@@ -49,5 +49,5 @@ To adopt:
 If Pac-man eats one of these pellets, it allows him to eat ghosts.
 
 To adopt:
-  Color: N/A
+  Color: Green (0,255,0)
   Dimension: 1x1 px
