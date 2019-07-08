@@ -20,7 +20,7 @@ public class Main {
 	public static void init() {
 		// Initialize
 		game = new Game();
-		frame = new JFrame("PacAI");
+		frame = new JFrame("PacAI - Blu3flux");
 		renderer = new Renderer(game);
 		
 		// Setup window
