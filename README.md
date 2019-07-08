@@ -25,7 +25,7 @@ To adopt:
 The location where Pac-man will spawn.
 
 To adopt:
-  Color: N/A
+  Color: Red (255,0,0)
   Dimesion: 2x1 px
   
 #### Ghosts spawn
@@ -49,5 +49,5 @@ To adopt:
 If Pac-man eats one of these pellets, it allows him to eat ghosts.
 
 To adopt:
-  Color: N/A
+  Color: Green (0,255,0)
   Dimension: 1x1 px
